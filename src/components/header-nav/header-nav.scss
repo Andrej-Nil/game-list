@@ -1,0 +1,13 @@
+.header-nav{
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+.header-nav__link{
+  color: #343a40;
+  &:hover{
+    color: #343a40;
+    text-decoration: underline;
+  }
+}
