@@ -5,7 +5,7 @@ import HeaderNav from "../header-nav";
 
 const Header = () => {
     return (
-        <div className='header row col-11 shadow-lg' >
+        <div className='header _shadow' >
             <HeaderLogo />
             <HeaderNav />
         </div>
