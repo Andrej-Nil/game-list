@@ -1,0 +1,28 @@
+.g-card{
+  max-width: 240px;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  transition: 0.3s ease;
+  &:hover{
+    background-color: #dfdfdf;
+    box-shadow: 0 3px 5px rgba(0, 0, 0,0.2) ;
+  }
+}
+
+.g-card-link{
+  width: 100%;
+  margin: 0 auto 10px;
+}
+
+.g-card__img{
+  margin: 0 auto;
+  width: 206px;
+  height: auto;
+}
+
+.g-card__by{
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 20px;
+}

@@ -1,32 +1,16 @@
 import React from "react";
 import './list-games.scss'
-import Button from "../iu/button";
+import GameCard from "../game-card";
 
 const ListGames = ({games}) => {
+    console.log(games)
     function renderGameList() {
         return games.map( (item) => {
-            const {name, by, img, id} = item;
+            const {id} = item;
             return(
-                <article
+                <GameCard
                     key={id}
-                    className='list-games-item g-card p-3 mb-4'
-                >
-                    <a href="#!" className='g-card-link'>
-                        <img className='g-card__img' src={img} alt={name}/>
-                    </a>
-                    <h5 className='g-card__title'>
-                        {name}
-                    </h5>
-                    <span className='g-card__by'>
-                        by {by}
-                    </span>
-
-                    <Button
-                        text='Add my list'
-                    />
-
-
-                </article>
+                    game={item}/>
             )
         })
     }
