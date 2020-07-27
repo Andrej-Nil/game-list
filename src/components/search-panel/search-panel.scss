@@ -1,5 +1,14 @@
 .search-panel{
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
 }
 
 .search-panel__input{
+  width: 100%;
+}
+
+.search-panel__btn{
+  display: inline;
 }

@@ -1,9 +1,15 @@
 .header-logo{
   font-size: 2rem;
-
+  padding-right: 45px;
+  margin-right: 20px;
+  position: relative;
 }
 
 .header-logo__i{
+  position: absolute;
+  top: 55%;
+  right: 0;
+  transform: translate(0, -50%);
   padding-left: 10px;
   color: tomato;
 }
