@@ -9,9 +9,9 @@ export default class App extends Component{
             {
                 name: 'Bloodborne',
                 year: '2014',
-                genre: 'action\\RPG',
+                genre: 'action/RPG',
                 by: 'FromSoftware',
-                type: 'disk',
+                format: 'disk',
                 id: '1'
             },
             {
@@ -19,23 +19,23 @@ export default class App extends Component{
                 by: 'Naughty Dog',
                 year: '2013',
                 genre: 'action-adventure',
-                type: 'disk',
+                format: 'disk',
                 id: '2'
             },
             {
                 name: 'Resident Evil 2',
                 by: 'Capcom',
                 year: '2019',
-                genre: ' survival horror',
-                type: 'psPlus',
+                genre: 'survival horror',
+                format: 'ps plus',
                 id: '3'
             },
             {
                 name: 'Dark Souls 3 goty',
                 by: 'FromSoftware',
                 year: '2017',
-                genre: 'action\\RPG',
-                type: 'psPlus',
+                genre: 'action/RPG',
+                format: 'ps plus',
                 id: '4'
             },
             {
@@ -43,7 +43,7 @@ export default class App extends Component{
                 by: 'SCE Santa Monica Studio',
                 year: '2018',
                 genre: 'action-adventure',
-                type: 'digital',
+                format: 'digital',
                 id: '5',
             },
         ],

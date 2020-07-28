@@ -1,16 +1,16 @@
 import React from "react";
 import './input.scss'
 
-const Input = ({label, type, placeholder}) => {
+const Input = ({ item: { type, placeholder, name} }) => {
+
     return (
-        <React.Fragment>
-            <label className='add-form__label'>test</label>
             <input
-                className='form-control form-control-sm add-form__input'
-                type='text'
-                placeholder='test'
+                className='form-control form-control-sm
+                form-ul-li__input'
+                name={name}
+                type={type}
+                placeholder={placeholder}
             />
-        </React.Fragment>
     )
 };
 

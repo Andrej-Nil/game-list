@@ -5,7 +5,7 @@ import SearchPanel from "../search-panel";
 
 const Header = () => {
     return (
-        <div className='header _shadow' >
+        <div className='header _bg-shadow' >
             <HeaderLogo />
             <SearchPanel />
         </div>

@@ -1,19 +1,66 @@
 import React, {Component} from "react";
 import './game-list.scss'
 import AddGame from "../add-game";
+import ItemList from "../item-list";
 
 export default class GameList extends Component{
     state={
-        inputs: [
-            {label: 'Name game', type: 'text',},
-            {label: 'Developers', type: 'text',},
-            {label: 'Year', type: 'text',},
-        ]
+        form: {
+            inputs: [
+                { type: 'text', placeholder: 'Name game', name:'nameGame', id: 1},
+                { type: 'text', placeholder: 'Developers', name:'developers', id: 2},
+                { type: 'text', placeholder: 'Year', name:'year', id: 3},
+            ],
+
+            selects: [
+                {
+                    label: 'Select genre',
+                    options: [
+                        {
+                            name: 'action/RPG',
+                            id: 1
+                        },
+                        {
+                            name:'action-adventure',
+                            id: 2
+                        },
+                        {
+                            name: 'survival horror',
+                            id: 3
+                        }
+                    ],
+                    id: 1,
+                },
+
+                {
+                    label: 'Select format',
+                    options: [
+                        {
+                            name: 'disk',
+                            id: 1
+                        },
+                        {
+                            name: 'digital',
+                            id: 2
+                        },
+                        {
+                            name: 'ps plus',
+                            id: 3
+                        }
+                    ],
+                    id: 2,
+                },
+            ]
+        }
+
     };
     render() {
+        const {form} = this.state;
+        const {games} = this.props;
         return (
             <div className='game-list'>
-                <AddGame />
+                <AddGame form={form}/>
+                <ItemList games={games}/>
             </div>
         )
     }
