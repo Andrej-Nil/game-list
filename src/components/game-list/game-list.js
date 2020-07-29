@@ -17,15 +17,15 @@ export default class GameList extends Component{
                     label: 'Select genre',
                     options: [
                         {
-                            name: 'action/RPG',
+                            option: 'action/RPG',
                             id: 1
                         },
                         {
-                            name:'action-adventure',
+                            option:'action-adventure',
                             id: 2
                         },
                         {
-                            name: 'survival horror',
+                            option: 'survival horror',
                             id: 3
                         }
                     ],
@@ -36,15 +36,15 @@ export default class GameList extends Component{
                     label: 'Select format',
                     options: [
                         {
-                            name: 'disk',
+                            option: 'disk',
                             id: 1
                         },
                         {
-                            name: 'digital',
+                            option: 'digital',
                             id: 2
                         },
                         {
-                            name: 'ps plus',
+                            option: 'ps plus',
                             id: 3
                         }
                     ],
@@ -52,7 +52,6 @@ export default class GameList extends Component{
                 },
             ]
         }
-
     };
     render() {
         const {form} = this.state;
@@ -64,5 +63,4 @@ export default class GameList extends Component{
             </div>
         )
     }
-
 };

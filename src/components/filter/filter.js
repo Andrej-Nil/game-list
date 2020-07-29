@@ -1,12 +1,17 @@
 import React from "react";
 import './filter.scss'
+import Select from "../select";
+import FilterFormat from "../filter-format";
+import FilterProgress from "../filter-progress";
 
-const Filter = props => {
+const Filter = ({select} ) => {
     return (
         <div className='filter'>
-            <select>
-
-            </select>
+            <div className='filter-select'>
+                <Select item={select}/>
+            </div>
+            <FilterProgress/>
+            <FilterFormat/>
         </div>
     )
 };

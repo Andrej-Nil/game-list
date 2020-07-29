@@ -4,12 +4,12 @@ import './select.scss'
 const Select = ( {item: {label, options}} ) => {
     function renderOptions() {
         return options.map( (item) => {
-            const {name, id} = item;
+            const {option, id} = item;
             return (
                 <option
                     key={id}
-                    value={name}>
-                    {name}
+                    value={option}>
+                    {option}
                 </option>
             )
         });
