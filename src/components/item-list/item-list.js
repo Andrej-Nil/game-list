@@ -18,14 +18,17 @@ export default class ItemList extends Component{
 
         columns: [
                {title: '№', id:1},
-               {title: 'Name', id:2},
+               {title: 'Title', id:2},
                {title: 'By', id:3},
                {title: 'Genre', id:4},
-               {title: 'Format', id:5},
-               {title: 'Progress', id:6},
-               {title: 'Delete', id:7},
+               {title: 'Year', id: 5},
+               {title: 'Format', id:6},
+               {title: 'Progress', id:7},
+               {title: 'Del', id:8},
         ]
     };
+
+
     render() {
         const {games} = this.props;
         const {select, columns} = this.state;

@@ -40,7 +40,7 @@ export default class GameList extends Component{
                             id: 1
                         },
                         {
-                            option: 'digital',
+                            option: 'hdd',
                             id: 2
                         },
                         {

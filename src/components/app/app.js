@@ -7,43 +7,48 @@ export default class App extends Component{
     state={
         games: [
             {
-                name: 'Bloodborne',
-                year: '2014',
-                genre: 'action/RPG',
+                title: 'Bloodborne',
                 by: 'FromSoftware',
+                genre: 'action/RPG',
+                year: '2014',
                 format: 'disk',
+                progress: '',
                 id: '1'
             },
             {
-                name: 'Uncharted 4',
+                title: 'Uncharted 4',
                 by: 'Naughty Dog',
-                year: '2013',
                 genre: 'action-adventure',
+                year: '2013',
                 format: 'disk',
+                progress: '',
                 id: '2'
             },
             {
-                name: 'Resident Evil 2',
+                title: 'Resident Evil 2',
                 by: 'Capcom',
-                year: '2019',
                 genre: 'survival horror',
+                year: '2019',
                 format: 'ps plus',
+                progress: '',
                 id: '3'
             },
             {
-                name: 'Dark Souls 3 goty',
+                title: 'Dark Souls 3 goty',
                 by: 'FromSoftware',
-                year: '2017',
                 genre: 'action/RPG',
+                year: '2017',
                 format: 'ps plus',
+                progress: '',
                 id: '4'
             },
             {
-                name: 'God of War',
+                title: 'God of War',
                 by: 'SCE Santa Monica Studio',
-                year: '2018',
                 genre: 'action-adventure',
-                format: 'digital',
+                year: '2018',
+                format: 'hdd',
+                progress: '',
                 id: '5',
             },
         ],
@@ -56,7 +61,6 @@ export default class App extends Component{
         <div className="app wrapper">
             <Header />
             <GameList games={games}/>
-
         </div>
 
       );

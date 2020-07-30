@@ -17,8 +17,8 @@ const ColTitle = ({columns}) => {
 
     const columnsEl = renderItem();
     return (
-        <div className='header-columns columns'>
-            <ul className='header-col-ul col-ul'>
+        <div className='col-title'>
+            <ul className='col-title-ul col-ul'>
                 {columnsEl}
             </ul>
         </div>
