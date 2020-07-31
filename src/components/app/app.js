@@ -12,7 +12,7 @@ export default class App extends Component{
                 genre: 'action/RPG',
                 year: '2014',
                 format: 'disk',
-                progress: '',
+                isPlayed: 'Passed',
                 id: '1'
             },
             {
@@ -21,7 +21,7 @@ export default class App extends Component{
                 genre: 'action-adventure',
                 year: '2013',
                 format: 'disk',
-                progress: '',
+                isPlayed: 'Played',
                 id: '2'
             },
             {
@@ -30,7 +30,7 @@ export default class App extends Component{
                 genre: 'survival horror',
                 year: '2019',
                 format: 'ps plus',
-                progress: '',
+                isPlayed: 'No played',
                 id: '3'
             },
             {
@@ -39,7 +39,7 @@ export default class App extends Component{
                 genre: 'action/RPG',
                 year: '2017',
                 format: 'ps plus',
-                progress: '',
+                isPlayed: 'Passed',
                 id: '4'
             },
             {
@@ -48,7 +48,7 @@ export default class App extends Component{
                 genre: 'action-adventure',
                 year: '2018',
                 format: 'hdd',
-                progress: '',
+                isPlayed: 'Played',
                 id: '5',
             },
         ],

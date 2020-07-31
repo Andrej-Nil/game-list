@@ -28,7 +28,7 @@
 }
 
 ._col-li3{
-  width: 23%;
+  width: 24%;
 }
 
 ._col-li4{
@@ -36,16 +36,16 @@
 }
 
 ._col-li5{
-  width: 7%;
+  width: 6%;
 }
 
 ._col-li6{
   position: relative;
-  width: 9%;
+  width: 7%;
 }
 
 ._col-li7{
-  width: 9%;
+  width: 10%;
 }
 
 ._col-li8{
@@ -89,9 +89,59 @@
   }
 }
 
+._is-played{
+  text-align: center;
+  padding: 6px 10px;
+}
 
+.button-toggle{
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  &:focus{
+    outline: none;
+  }
+
+
+}
+
+._passed{
+  background-color: #00c951;
+  border: 2px outset #007938;
+  &:active{
+    border: 2px inset rgba(0,121,56,1);
+    background-color: #00e049;
+  }
+}
+
+._played{
+  background-color: #ebdb00;
+  border: 2px outset #c1b33d;
+  &:active{
+    background-color: #fff13d;
+    border: 2px inset #cabc3d;
+  }
+}
+
+._no-played{
+  background-color: #48cbff;
+  border: 2px outset #2983db;
+  &:active{
+    background-color: #6ddcff;
+    border: 2px inset #2983db;
+  }
+}
 
 ._del-game{
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 20px;
   color: tomato;
+}
+
+.del-game__icon{
+  padding: 2px 5px;
+  cursor: pointer;
 }

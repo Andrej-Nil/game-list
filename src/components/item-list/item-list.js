@@ -23,7 +23,7 @@ export default class ItemList extends Component{
                {title: 'Genre', id:4},
                {title: 'Year', id: 5},
                {title: 'Format', id:6},
-               {title: 'Progress', id:7},
+               {title: 'Is played', id:7},
                {title: 'Del', id:8},
         ]
     };

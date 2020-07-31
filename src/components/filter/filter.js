@@ -2,7 +2,7 @@ import React from "react";
 import './filter.scss'
 import Select from "../select";
 import FilterFormat from "../filter-format";
-import FilterProgress from "../filter-progress";
+import FilterIsPlayed from "../filter-is-played";
 
 const Filter = ({select} ) => {
     return (
@@ -10,7 +10,7 @@ const Filter = ({select} ) => {
             <div className='filter-select'>
                 <Select item={select}/>
             </div>
-            <FilterProgress/>
+            <FilterIsPlayed/>
             <FilterFormat/>
         </div>
     )

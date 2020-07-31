@@ -4,8 +4,9 @@ import './game.scss'
 const Game = ({game, index}) => {
     const {
         id, title, by, genre,
-        year, format, progress} = game;
+        year, format, isPlayed} = game;
     let icon = '';
+    let isPlayedCls = '';
     switch (format) {
         case 'disk': {
             icon = '_disk';
@@ -20,6 +21,22 @@ const Game = ({game, index}) => {
             break;
         }
         default: icon = '';
+    }
+
+    switch (isPlayed) {
+        case 'Passed': {
+            isPlayedCls = '_passed';
+            break;
+        }
+        case 'Played': {
+            isPlayedCls = '_played';
+            break;
+        }
+        case 'No played': {
+            isPlayedCls = '_no-played';
+            break;
+        }
+        default: isPlayedCls = '';
     }
     return (
         <ul
@@ -57,14 +74,16 @@ const Game = ({game, index}) => {
             </li>
 
             <li
-                className={`col-li _col-li7`}>
-                <span>{progress}</span>
+                className={`col-li _col-li7 _is-played`}>
+                    <button className={`button-toggle ${isPlayedCls}`}>
+                        {isPlayed}
+                    </button>
             </li>
 
             <li
                 className={`col-li _col-li8 _del-game`}>
                         <span>
-                            <i className="fa fa-times" aria-hidden="true"/>
+                            <i className="fa fa-times del-game__icon" aria-hidden="true"/>
                         </span>
             </li>
         </ul>
