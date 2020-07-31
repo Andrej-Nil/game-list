@@ -52,15 +52,63 @@ export default class App extends Component{
                 id: '5',
             },
         ],
-        term: '',
+        patternStr: '',
     };
 
+    delGame = (id) => {
+
+        this.setState(({games}) => {
+
+                const idx = games.findIndex((el) => el.id === id);
+                const newArr = [
+                    ...games.slice(0, idx),
+                    ...games.slice(idx + 1)
+                ];
+
+                return {
+                    games: newArr
+                }
+            }
+        )
+    };
+
+    searchChange = (patternStr) => {
+        this.setState({patternStr});
+    };
+
+    search(arr, patternStr) {
+        if(patternStr.label === 0){
+            return arr;
+        }
+
+        return arr.filter( (item) => {
+            return item.title
+                .toLowerCase()
+                .indexOf(patternStr) > -1;
+        })
+    }
+
+    sortAbc(a,b) {
+        let sortArr = [];
+        if( a.title > b.title) { sortArr = 1 }
+        if( a.title < b.title) { sortArr = -1 }
+        return sortArr
+    }
+
     render(){
-        const {games} = this.state;
+        const {games, patternStr} = this.state;
+        const searchListOfGames = this.search(games, patternStr);
+        const sortListOfGames = searchListOfGames.slice().sort(this.sortAbc);
+
       return (
         <div className="app wrapper">
-            <Header />
-            <GameList games={games}/>
+            <Header
+                searchChange={this.searchChange}
+            />
+            <GameList
+                games={sortListOfGames}
+                delGame={this.delGame}
+            />
         </div>
 
       );

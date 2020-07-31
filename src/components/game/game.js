@@ -1,7 +1,7 @@
 import React from "react";
 import './game.scss'
 
-const Game = ({game, index}) => {
+const Game = ({game, index, delGame}) => {
     const {
         id, title, by, genre,
         year, format, isPlayed} = game;
@@ -82,7 +82,9 @@ const Game = ({game, index}) => {
 
             <li
                 className={`col-li _col-li8 _del-game`}>
-                        <span>
+                        <span
+                            onClick={ () => delGame(id)}
+                        >
                             <i className="fa fa-times del-game__icon" aria-hidden="true"/>
                         </span>
             </li>

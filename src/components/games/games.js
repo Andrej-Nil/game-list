@@ -2,7 +2,7 @@ import React from "react";
 import './games.scss'
 import Game from "../game";
 
-const Games = ({games}) => {
+const Games = ({games, delGame}) => {
     function renderGames() {
         return games.map( (game, index) => {
             const {id} = game;
@@ -11,12 +11,17 @@ const Games = ({games}) => {
                     key={id}
                     game={game}
                     index={index}
+                    delGame={delGame}
                 />
             )
         })
     }
 
-    const gameList = renderGames();
+    const gameList = games.length
+        ? renderGames()
+        : <div>
+            <p>No Game</p>
+        </div>;
     return (
         <div className='games'>
             {gameList}

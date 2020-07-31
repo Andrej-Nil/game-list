@@ -3,11 +3,13 @@ import './header.scss';
 import HeaderLogo from "../header-logo";
 import SearchPanel from "../search-panel";
 
-const Header = () => {
+const Header = ({searchChange}) => {
     return (
         <div className='header _bg-shadow' >
             <HeaderLogo />
-            <SearchPanel />
+            <SearchPanel
+                searchChange={searchChange}
+            />
         </div>
     )
 };
