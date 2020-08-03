@@ -1,7 +1,12 @@
 import React from "react";
 import './game.scss'
 
-const Game = ({game, index, delGame}) => {
+const Game = ({
+                  game,
+                  index,
+                  delGame,
+                  isPlayedChange,
+              }) => {
     const {
         id, title, by, genre,
         year, format, isPlayed} = game;
@@ -75,7 +80,10 @@ const Game = ({game, index, delGame}) => {
 
             <li
                 className={`col-li _col-li7 _is-played`}>
-                    <button className={`button-toggle ${isPlayedCls}`}>
+                    <button
+                        onClick={() => isPlayedChange(id)}
+                        className={`button-toggle ${isPlayedCls}`
+                        }>
                         {isPlayed}
                     </button>
             </li>

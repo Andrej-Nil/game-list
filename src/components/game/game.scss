@@ -105,19 +105,19 @@
 }
 
 ._passed{
-  background-color: #00c951;
+  background-color: #59ff38;
   border: 2px outset #007938;
   &:active{
     border: 2px inset rgba(0,121,56,1);
-    background-color: #00e049;
+    background-color: #a5ff70;
   }
 }
 
 ._played{
-  background-color: #ebdb00;
+  background-color: #fff06c;
   border: 2px outset #c1b33d;
   &:active{
-    background-color: #fff13d;
+    background-color: #feffb1;
     border: 2px inset #cabc3d;
   }
 }

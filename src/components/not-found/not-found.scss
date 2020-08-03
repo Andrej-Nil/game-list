@@ -1,0 +1,64 @@
+.not-found{
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.not-found_message{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+@keyframes ldio-jr2p9onzqfl {
+  0% {transform: translate(2px, 2px)}
+  33.33% {transform: translate(102px,2px)}
+  66.66% {transform: translate(42px,102px)}
+  100%    {transform: translate(2px,2px)}
+}
+
+
+.ldio-jr2p9onzqfl > div {
+  transform: scale(0.44);
+  transform-origin: 100px 100px;
+}
+
+.ldio-jr2p9onzqfl > div > div {
+  animation: ldio-jr2p9onzqfl 6.666666666666666s linear infinite;
+  position: absolute
+}
+
+.ldio-jr2p9onzqfl > div > div div:nth-child(1) {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 12px solid #0a0a0a;
+  background: #d5e8ff
+}
+
+.ldio-jr2p9onzqfl > div > div div:nth-child(2) {
+  width: 17px;
+  height:  51px;
+  transform: rotate(-45deg);
+  background: #0a0a0a;
+  border-radius: 0 0 8px 8px;
+  position: absolute;
+  top: 68px;
+  left: 85px
+}
+.loadingio-spinner-magnify-0rvt9ejb6mkq {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: #fff;
+}
+.ldio-jr2p9onzqfl {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+.ldio-jr2p9onzqfl div {
+  box-sizing: content-box;
+}

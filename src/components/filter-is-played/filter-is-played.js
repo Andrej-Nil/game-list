@@ -1,15 +1,34 @@
-import React from "react";
+import React, {Component} from "react";
 import './filter-is-played.scss'
 
 
-const FilterIsPlayed = props => {
-    return (
-        <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-secondary">No played</button>
-            <button type="button" className="btn btn-primary">Played</button>
-            <button type="button" className="btn btn-secondary">Passed</button>
-        </div>
-    )
+export default class FilterIsPlayed extends Component{
+    buttons= [
+        {name: 'all', label: 'All'},
+        {name: 'noPlayed', label: 'No played'},
+        {name: 'played', label: 'Played'},
+        {name: 'passed', label: 'Passed'},
+    ];
+    render() {
+        const buttons = this.buttons.map( ({name, label}) => {
+            const isActive = name === 'all';
+            const cls = isActive ? 'btn-primary' : 'btn-secondary';
+            return (
+                <buttom
+                    kay={name}
+                    type='button'
+                    className={`btn ${cls}`}
+                >
+                    {label}
+                </buttom>
+            )
+        });
+        return (
+            <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                {buttons}
+            </div>
+        )
+    }
 };
 
-export default FilterIsPlayed;
+

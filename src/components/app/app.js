@@ -53,23 +53,9 @@ export default class App extends Component{
             },
         ],
         patternStr: '',
-    };
-
-    delGame = (id) => {
-
-        this.setState(({games}) => {
-
-                const idx = games.findIndex((el) => el.id === id);
-                const newArr = [
-                    ...games.slice(0, idx),
-                    ...games.slice(idx + 1)
-                ];
-
-                return {
-                    games: newArr
-                }
-            }
-        )
+        isPlayed: 'all',
+        format: 'all',
+        selectGenre: 'all'
     };
 
     searchChange = (patternStr) => {
@@ -88,12 +74,69 @@ export default class App extends Component{
         })
     }
 
+    delGame = (id) => {
+
+        this.setState(({games}) => {
+
+                const idx = this.findIdx(id);
+                const newArr = [
+                    ...games.slice(0, idx),
+                    ...games.slice(idx + 1)
+                ];
+
+                return {
+                    games: newArr
+                }
+            }
+        )
+    };
+
+    isPlayedChange = (id) => {
+
+        this.setState(({games}) => {
+            const idx = this.findIdx(id);
+            const game =  games[idx];
+            switch (game.isPlayed) {
+                case "No played": {
+                    game.isPlayed = 'Played';
+                    break;
+                }
+
+                case "Played": {
+                    game.isPlayed = 'Passed';
+                    break;
+                }
+                case "Passed": {
+                    game.isPlayed = 'No played';
+                    break;
+                }
+                default: {
+                    game.isPlayed = 'No played';
+                }
+            }
+            const newArr = [
+                ...games.slice(0, idx),
+                game,
+                ...games.slice(idx + 1)
+            ];
+
+            return {
+                games: newArr
+            }
+        })
+    };
+
+    findIdx(id) {
+        return this.state.games.findIndex((el) => el.id === id);
+    }
+
     sortAbc(a,b) {
         let sortArr = [];
         if( a.title > b.title) { sortArr = 1 }
         if( a.title < b.title) { sortArr = -1 }
         return sortArr
     }
+
 
     render(){
         const {games, patternStr} = this.state;
@@ -108,6 +151,7 @@ export default class App extends Component{
             <GameList
                 games={sortListOfGames}
                 delGame={this.delGame}
+                isPlayedChange={this.isPlayedChange}
             />
         </div>
 

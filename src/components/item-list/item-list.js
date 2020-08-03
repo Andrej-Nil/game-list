@@ -31,7 +31,7 @@ export default class ItemList extends Component{
 
     render() {
         const {select, columns} = this.state;
-        const {games, delGame} = this.props;
+        const {games, delGame, isPlayedChange} = this.props;
         return (
             <div className="item-list _bg-shadow">
                 <Filter select={select}/>
@@ -39,6 +39,7 @@ export default class ItemList extends Component{
                 <Games
                     games={games}
                     delGame={delGame}
+                    isPlayedChange={isPlayedChange}
                 />
             </div>
         )

@@ -1,8 +1,9 @@
 import React from "react";
 import './games.scss'
 import Game from "../game";
+import NotFound from "../not-found";
 
-const Games = ({games, delGame}) => {
+const Games = ({games, delGame, isPlayedChange}) => {
     function renderGames() {
         return games.map( (game, index) => {
             const {id} = game;
@@ -12,6 +13,7 @@ const Games = ({games, delGame}) => {
                     game={game}
                     index={index}
                     delGame={delGame}
+                    isPlayedChange={isPlayedChange}
                 />
             )
         })
@@ -19,9 +21,7 @@ const Games = ({games, delGame}) => {
 
     const gameList = games.length
         ? renderGames()
-        : <div>
-            <p>No Game</p>
-        </div>;
+        : <NotFound/>;
     return (
         <div className='games'>
             {gameList}
