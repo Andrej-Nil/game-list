@@ -10,21 +10,23 @@ export default class FilterIsPlayed extends Component{
         {name: 'passed', label: 'Passed'},
     ];
     render() {
+        const {isPlayedChange, isPlayedActive} = this.props;
         const buttons = this.buttons.map( ({name, label}) => {
-            const isActive = name === 'all';
+            const isActive = name === isPlayedActive;
             const cls = isActive ? 'btn-primary' : 'btn-secondary';
             return (
-                <buttom
-                    kay={name}
+                <button
+                    key={name}
                     type='button'
-                    className={`btn ${cls}`}
+                    className={`played-btn btn ${cls}`}
+                    onClick={() => isPlayedChange(name)}
                 >
                     {label}
-                </buttom>
+                </button>
             )
         });
         return (
-            <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <div className="filter-is-played btn-group btn-group-sm" role="group" aria-label="Basic example">
                 {buttons}
             </div>
         )

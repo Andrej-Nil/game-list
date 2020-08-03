@@ -55,14 +55,16 @@ export default class GameList extends Component{
     };
     render() {
         const {form} = this.state;
-        const {games, delGame, isPlayedChange} = this.props;
+        const {games, isPlayedChange, isPlayedActive, isPlayedChangeBtn,  delGame} = this.props;
         return (
             <div className='game-list'>
                 <AddGame form={form}/>
                 <ItemList
                     games={games}
-                    delGame={delGame}
                     isPlayedChange={isPlayedChange}
+                    isPlayedActive={isPlayedActive}
+                    isPlayedChangeBtn={isPlayedChangeBtn}
+                    delGame={delGame}
                 />
             </div>
         )

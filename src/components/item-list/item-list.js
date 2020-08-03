@@ -31,15 +31,19 @@ export default class ItemList extends Component{
 
     render() {
         const {select, columns} = this.state;
-        const {games, delGame, isPlayedChange} = this.props;
+        const {games, isPlayedChange, isPlayedActive, isPlayedChangeBtn, delGame} = this.props;
         return (
             <div className="item-list _bg-shadow">
-                <Filter select={select}/>
+                <Filter
+                    select={select}
+                    isPlayedChange={isPlayedChange}
+                    isPlayedActive={isPlayedActive}
+                />
                 <ColTitle columns={columns}/>
                 <Games
                     games={games}
+                    isPlayedChangeBtn={isPlayedChangeBtn}
                     delGame={delGame}
-                    isPlayedChange={isPlayedChange}
                 />
             </div>
         )

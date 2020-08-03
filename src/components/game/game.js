@@ -5,13 +5,14 @@ const Game = ({
                   game,
                   index,
                   delGame,
-                  isPlayedChange,
+                  isPlayedChangeBtn,
               }) => {
     const {
         id, title, by, genre,
         year, format, isPlayed} = game;
-    let icon = '';
-    let isPlayedCls = '';
+    let icon;
+    let label;
+    let isPlayedCls;
     switch (format) {
         case 'disk': {
             icon = '_disk';
@@ -29,16 +30,19 @@ const Game = ({
     }
 
     switch (isPlayed) {
-        case 'Passed': {
+        case 'passed': {
             isPlayedCls = '_passed';
+            label = 'Passed';
             break;
         }
-        case 'Played': {
+        case 'played': {
             isPlayedCls = '_played';
+            label = 'Played';
             break;
         }
-        case 'No played': {
+        case 'noPlayed': {
             isPlayedCls = '_no-played';
+            label = 'No played';
             break;
         }
         default: isPlayedCls = '';
@@ -81,10 +85,10 @@ const Game = ({
             <li
                 className={`col-li _col-li7 _is-played`}>
                     <button
-                        onClick={() => isPlayedChange(id)}
+                        onClick={() => isPlayedChangeBtn(id)}
                         className={`button-toggle ${isPlayedCls}`
                         }>
-                        {isPlayed}
+                        {label}
                     </button>
             </li>
 
