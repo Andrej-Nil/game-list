@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './filter.scss'
-import Select from "../select";
 import FilterBtn from "../filter-btn";
+import FilterGenre from "../filter-genre";
 
 export default class Filter extends Component{
     state= {
@@ -20,12 +20,14 @@ export default class Filter extends Component{
         ],
     };
     render() {
-        const {select, isPlayed, format, filterChange} = this.props;
+        const {genreChange, isPlayed, format, filterChange} = this.props;
         const {isPlayedFilterBtn, formatFilterBtn} = this.state;
         return (
             <div className='filter'>
                 <div className='filter-select'>
-                    <Select item={select}/>
+                    <FilterGenre
+                        genreChange={genreChange}
+                    />
                 </div>
                 <FilterBtn
                     typeFilter = 'isPlayed'

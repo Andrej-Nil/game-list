@@ -6,16 +6,6 @@ import Games from "../games";
 
 export default class ItemList extends Component{
     state = {
-        select: {
-            label: 'Select genre',
-            options: [
-                {option: 'all', id: 1},
-                {option: 'action/RPG', id: 2},
-                {option: 'action-adventure', id: 3},
-                {option: 'survival horror', id: 4},
-            ]
-        },
-
         columns: [
                {title: '№', id:1},
                {title: 'Title', id:2},
@@ -30,12 +20,12 @@ export default class ItemList extends Component{
 
 
     render() {
-        const {select, columns} = this.state;
-        const {games, filterChange, isPlayed, format, isPlayedChangeBtn, delGame} = this.props;
+        const {columns} = this.state;
+        const {games, genreChange, filterChange, isPlayed, format, isPlayedChangeBtn, delGame} = this.props;
         return (
             <div className="item-list _bg-shadow">
                 <Filter
-                    select={select}
+                    genreChange={genreChange}
                     filterChange={filterChange}
                     isPlayed={isPlayed}
                     format={format}

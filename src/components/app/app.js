@@ -55,7 +55,7 @@ export default class App extends Component{
         patternStr: '',
         isPlayed: 'all',
         format: 'all',
-        selectGenre: 'all'
+        genre: 'all'
     };
 
     searchChange = (patternStr) => {
@@ -72,6 +72,19 @@ export default class App extends Component{
                 .toLowerCase()
                 .indexOf(patternStr) > -1;
         })
+    }
+
+    genreChange = (e) => {
+        this.setState({
+            genre: e.target.value
+        })
+    };
+
+    filterGenre(arr, genre) {
+        if(genre === 'all'){
+            return arr;
+        }
+        return arr.filter((el) => el.genre === genre)
     }
 
     filterChange = (name, typeFilter) => {
@@ -163,13 +176,15 @@ export default class App extends Component{
     }
 
     render(){
-        const {games, isPlayed, format, patternStr} = this.state;
+        const {games, genre,  isPlayed, format, patternStr} = this.state;
+
         const searchListOfGames = this.search(games, patternStr);
         const isPlayedListOfGame = this.isPlayedFilter(searchListOfGames, isPlayed);
         const formatListOfGames = this.formatFilter(isPlayedListOfGame, format);
+        const filterListOfGames = this.filterGenre(formatListOfGames, genre);
 
 
-        const sortListOfGames = formatListOfGames.slice().sort(this.sortAbc);
+        const sortListOfGames = filterListOfGames.slice().sort(this.sortAbc);
 
       return (
         <div className="app wrapper">
@@ -178,6 +193,7 @@ export default class App extends Component{
             />
             <GameList
                 games={sortListOfGames}
+                genreChange={this.genreChange}
                 filterChange={this.filterChange}
                 isPlayed={isPlayed}
                 format={format}
