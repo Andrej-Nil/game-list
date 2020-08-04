@@ -29,7 +29,7 @@ export default class App extends Component{
                 by: 'Capcom',
                 genre: 'survival horror',
                 year: '2019',
-                format: 'ps plus',
+                format: 'psPlus',
                 isPlayed: 'noPlayed',
                 id: '3'
             },
@@ -38,7 +38,7 @@ export default class App extends Component{
                 by: 'FromSoftware',
                 genre: 'action/RPG',
                 year: '2017',
-                format: 'ps plus',
+                format: 'psPlus',
                 isPlayed: 'passed',
                 id: '4'
             },
@@ -53,7 +53,7 @@ export default class App extends Component{
             },
         ],
         patternStr: '',
-        isPlayedActive: 'all',
+        isPlayed: 'all',
         format: 'all',
         selectGenre: 'all'
     };
@@ -74,14 +74,31 @@ export default class App extends Component{
         })
     }
 
-    isPlayedFilter(arr, isPlayedActive) {
-        if(isPlayedActive === 'all'){
+    filterChange = (name, typeFilter) => {
+        this.setState(() => {
+            if(typeFilter === 'isPlayed') return {isPlayed: name};
+            if(typeFilter === 'format') return {format: name}
+        })
+    };
+
+    isPlayedFilter(arr, isPlayed) {
+        if(isPlayed === 'all'){
             return arr
         }
        return (
-           arr.filter((el) => el.isPlayed === isPlayedActive)
+           arr.filter((el) => el.isPlayed === isPlayed)
        )
     }
+
+    formatFilter(arr, format) {
+        if(format === 'all'){
+            return arr
+        }
+        return (
+            arr.filter((el) => el.format === format)
+        )
+    }
+
 
     isPlayedChangeBtn = (id) => {
 
@@ -118,14 +135,7 @@ export default class App extends Component{
         })
     };
 
-    isPlayedChange = (name) => {
-        this.setState({
-            isPlayedActive: name
-        })
-    };
-
     delGame = (id) => {
-
         this.setState(({games}) => {
 
                 const idx = this.findIdx(id);
@@ -141,8 +151,6 @@ export default class App extends Component{
         )
     };
 
-
-
     findIdx(id) {
         return this.state.games.findIndex((el) => el.id === id);
     }
@@ -154,13 +162,14 @@ export default class App extends Component{
         return sortArr
     }
 
-
     render(){
-        const {games, isPlayedActive, patternStr} = this.state;
-        const searchListOfGames =
-            this.isPlayedFilter(this.search(games, patternStr), isPlayedActive);
+        const {games, isPlayed, format, patternStr} = this.state;
+        const searchListOfGames = this.search(games, patternStr);
+        const isPlayedListOfGame = this.isPlayedFilter(searchListOfGames, isPlayed);
+        const formatListOfGames = this.formatFilter(isPlayedListOfGame, format);
 
-        const sortListOfGames = searchListOfGames.slice().sort(this.sortAbc);
+
+        const sortListOfGames = formatListOfGames.slice().sort(this.sortAbc);
 
       return (
         <div className="app wrapper">
@@ -169,8 +178,9 @@ export default class App extends Component{
             />
             <GameList
                 games={sortListOfGames}
-                isPlayedChange={this.isPlayedChange}
-                isPlayedActive={isPlayedActive}
+                filterChange={this.filterChange}
+                isPlayed={isPlayed}
+                format={format}
                 isPlayedChangeBtn={this.isPlayedChangeBtn}
                 delGame={this.delGame}
             />

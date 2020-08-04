@@ -8,20 +8,20 @@ export default class SearchPanel extends Component{
 
     patternStrChange(e) {
         e.preventDefault();
-        const patternStr = e.target.search.value
+        const patternStr = e.target.value
             .trim()
             .toLowerCase();
         this.setState({patternStr});
         this.props.searchChange(patternStr);
-        e.target.search.value = '';
     };
 
     render() {
         return (
             <form
-                onSubmit={ (e) => this.patternStrChange(e)}
+                // onSubmit={ (e) => this.patternStrChange(e)}
                 className='search-panel'>
                 <input
+                    onChange={ (e) => this.patternStrChange(e)}
                     name='search'
                     placeholder='Find game'
                     className='form-control search-panel__input'

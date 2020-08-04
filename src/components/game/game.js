@@ -18,7 +18,7 @@ const Game = ({
             icon = '_disk';
             break;
         }
-        case 'ps plus': {
+        case 'psPlus': {
             icon = '_ps-plus';
             break;
         }
