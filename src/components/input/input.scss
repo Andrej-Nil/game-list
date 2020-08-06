@@ -1,3 +1,21 @@
 .form-ul-li__input{
-  padding: 0 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 3px 10px;
+}
+
+.form-ul-li__label{
+  font-weight: 500;
+  margin-bottom: 3px;
+  padding-left: 10px;
+}
+
+.form-ul-li__error{
+  font-size: 17px;
+  display: block;
+  color: tomato;
+}
+
+.input-error{
+  color: tomato;
 }

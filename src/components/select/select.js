@@ -1,15 +1,16 @@
 import React from "react";
 import './select.scss'
 
-const Select = ( {item: {label, options}}) => {
+const Select = ( {label, options, onChange} ) => {
     function renderOptions() {
         return options.map( (item) => {
-            const {option, id} = item;
+            const {option} = item;
             return (
                 <option
-                    key={id}
+                    key={option}
                     value={option}>
                     {option}
+
                 </option>
             )
         });
@@ -24,7 +25,10 @@ const Select = ( {item: {label, options}}) => {
                 {label}
             </label>
             <select
-                className='add-form-select custom-select custom-select-sm'>
+                className='add-form-select custom-select custom-select-sm'
+                onChange={onChange}
+            >
+
                 {elementOptions}
             </select>
         </React.Fragment>
