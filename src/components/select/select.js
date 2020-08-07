@@ -1,15 +1,15 @@
 import React from "react";
 import './select.scss'
 
-const Select = ( {label, options, onChange} ) => {
+const Select = ( {label, id, options, onChange} ) => {
     function renderOptions() {
         return options.map( (item) => {
-            const {option} = item;
+            const {value, text} = item;
             return (
                 <option
-                    key={option}
-                    value={option}>
-                    {option}
+                    key={value}
+                    value={value}>
+                    {text}
 
                 </option>
             )
@@ -19,12 +19,13 @@ const Select = ( {label, options, onChange} ) => {
     const elementOptions = renderOptions();
     return (
         <React.Fragment>
-            <label
+            <label htmlFor={id}
                 className='add-form__label'
             >
                 {label}
             </label>
             <select
+                id={id}
                 className='add-form-select custom-select custom-select-sm'
                 onChange={onChange}
             >

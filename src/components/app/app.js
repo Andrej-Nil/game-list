@@ -58,6 +58,19 @@ export default class App extends Component{
         genre: 'all'
     };
 
+    addNewGame = (newGame) => {
+        // const copyGames = this.state.games.concat(newGame);
+        console.log(newGame)
+        // console.log(copyGames)
+
+       this.setState(({games}) => {
+           const copyGames = games.concat(newGame);
+           return {
+               games: copyGames
+           }
+       })
+    };
+
     searchChange = (patternStr) => {
         this.setState({patternStr});
     };
@@ -111,7 +124,6 @@ export default class App extends Component{
             arr.filter((el) => el.format === format)
         )
     }
-
 
     isPlayedChangeBtn = (id) => {
 
@@ -192,6 +204,7 @@ export default class App extends Component{
                 searchChange={this.searchChange}
             />
             <GameList
+                addNewGame={this.addNewGame}
                 games={sortListOfGames}
                 genreChange={this.genreChange}
                 filterChange={this.filterChange}
