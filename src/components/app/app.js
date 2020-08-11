@@ -24,7 +24,13 @@ export default class App extends Component{
     }
 
     addNewGame =  (newGame) => {
-
+        this.setState( ({games}) => {
+            const newArrGames = games.concat(newGame);
+            console.log(newArrGames)
+            return {
+                games: newArrGames
+            }
+        })
     };
 
     searchChange = (patternStr) => {
@@ -116,15 +122,13 @@ export default class App extends Component{
         })
     };
 
-    delGame = (id) => {
+    delGameInState = (id) => {
         this.setState(({games}) => {
-
                 const idx = this.findIdx(id);
                 const newArr = [
                     ...games.slice(0, idx),
                     ...games.slice(idx + 1)
                 ];
-
                 return {
                     games: newArr
                 }
@@ -167,7 +171,7 @@ export default class App extends Component{
                 isPlayed={isPlayed}
                 format={format}
                 isPlayedChangeBtn={this.isPlayedChangeBtn}
-                delGame={this.delGame}
+                delGameInState={this.delGameInState}
             />
         </div>
 

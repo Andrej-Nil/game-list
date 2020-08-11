@@ -3,7 +3,7 @@ import './games.scss'
 import Game from "../game";
 import NotFound from "../not-found";
 
-const Games = ({games, delGame, isPlayedChangeBtn}) => {
+const Games = ({games, delGameInState, isPlayedChangeBtn}) => {
     function renderGames() {
         return games.map( (game, index) => {
             const {id} = game;
@@ -12,7 +12,7 @@ const Games = ({games, delGame, isPlayedChangeBtn}) => {
                     key={id}
                     game={game}
                     index={index}
-                    delGame={delGame}
+                    delGameInState={delGameInState}
                     isPlayedChangeBtn={isPlayedChangeBtn}
                 />
             )

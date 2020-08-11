@@ -5,7 +5,7 @@ import ColTitle from "../col-title";
 import Games from "../games";
 
 const ItemList = props => {
-    const {games, genreChange, filterChange, isPlayed, format, isPlayedChangeBtn, delGame} = props;
+    const {games, genreChange, filterChange, isPlayed, format, isPlayedChangeBtn, delGameInState} = props;
 
     return (
         <div className="item-list _bg-shadow">
@@ -19,7 +19,7 @@ const ItemList = props => {
             <Games
                 games={games}
                 isPlayedChangeBtn={isPlayedChangeBtn}
-                delGame={delGame}
+                delGameInState={delGameInState}
             />
         </div>
     )

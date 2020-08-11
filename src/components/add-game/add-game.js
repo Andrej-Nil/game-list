@@ -131,6 +131,7 @@ export default class AddGame extends Component {
         const id = ('' + counter).length < 2 ? `game0${counter}` : `game${counter}`;
 
         const {formControlsInput, formControlsSelect} = this.state;
+        const { addNewGame } = this.props;
 
         const newGame = {
             title: formControlsInput.titleGame.value,
@@ -144,7 +145,7 @@ export default class AddGame extends Component {
         };
 
         newGame.keyGame = await this.server.postGame(newGame);
-        console.log(newGame);
+        addNewGame(newGame);
         this.server.updateCounter(counter);
 
         this.setState({

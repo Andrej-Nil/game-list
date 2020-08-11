@@ -7,7 +7,7 @@ const GameList = props => {
     const {games, addNewGame,
         genreChange, filterChange,
         isPlayed, format,
-        isPlayedChangeBtn, delGame} = props;
+        isPlayedChangeBtn, delGameInState} = props;
 
     return (
         <div className='game-list'>
@@ -19,7 +19,7 @@ const GameList = props => {
                 isPlayed={isPlayed}
                 format={format}
                 isPlayedChangeBtn={isPlayedChangeBtn}
-                delGame={delGame}
+                delGameInState={delGameInState}
             />
         </div>
     )

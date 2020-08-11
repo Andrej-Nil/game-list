@@ -29,7 +29,11 @@ export default class Server {
     }
 
      postGame = async (newGame) => {
-        const response = await axios.post('https://game-list-fa57c.firebaseio.com/games.json', newGame);
+        const response = await axios.post(`${this._baseApi}/games.json`, newGame);
         return response.data.name
+    };
+
+    deleteGame = async (keyGame) => {
+        await axios.delete(`${this._baseApi}/games/${keyGame}.json`)
     }
 }

@@ -1,52 +1,60 @@
-import React from "react";
+import React, {Component} from "react";
 import './game.scss'
+import Server from "../../server";
 
-const Game = ({
-                  game,
-                  index,
-                  delGame,
-                  isPlayedChangeBtn,
-              }) => {
-    const {
-        id, title, by, genre,
-        year, format, isPlayed} = game;
-    let icon;
-    let label;
-    let isPlayedCls;
-    switch (format) {
-        case 'disk': {
-            icon = '_disk';
-            break;
-        }
-        case 'psPlus': {
-            icon = '_ps-plus';
-            break;
-        }
-        case 'hdd': {
-            icon = '_hdd';
-            break;
-        }
-        default: icon = '';
-    }
 
-    switch (isPlayed) {
-        case 'passed': {
-            isPlayedCls = '_passed';
-            label = 'Passed';
-            break;
+export default class Game extends Component {
+    server = new Server();
+    removeGame = async (id, keyGame)=>{
+         try{
+             await this.server.deleteGame(keyGame)
+         } catch (e) {
+
+         }
+        this.props.delGameInState(id)
+    };
+    render(){
+        const {game, index, isPlayedChangeBtn } = this.props;
+        const { id, title, by, genre, year, format, keyGame, isPlayed} = game;
+
+        let icon;
+        let label;
+        let isPlayedCls;
+
+        switch (format) {
+            case 'disk': {
+                icon = '_disk';
+                break;
+            }
+            case 'psPlus': {
+                icon = '_ps-plus';
+                break;
+            }
+            case 'hdd': {
+                icon = '_hdd';
+                break;
+            }
+            default: icon = '';
         }
-        case 'played': {
-            isPlayedCls = '_played';
-            label = 'Played';
-            break;
+
+        switch (isPlayed) {
+            case 'passed': {
+                isPlayedCls = '_passed';
+                label = 'Passed';
+                break;
+            }
+            case 'played': {
+                isPlayedCls = '_played';
+                label = 'Played';
+                break;
+            }
+            case 'noPlayed': {
+                isPlayedCls = '_no-played';
+                label = 'No played';
+                break;
+            }
+            default: isPlayedCls = '';
         }
-        case 'noPlayed': {
-            isPlayedCls = '_no-played';
-            label = 'No played';
-            break;
-        }
-        default: isPlayedCls = '';
-    }
     return (
         <ul
             key={id}
@@ -84,24 +92,22 @@ const Game = ({
 
             <li
                 className={`col-li _col-li7 _is-played`}>
-                    <button
-                        onClick={() => isPlayedChangeBtn(id)}
-                        className={`button-toggle ${isPlayedCls}`
-                        }>
-                        {label}
-                    </button>
+                <button
+                    onClick={() => isPlayedChangeBtn(id)}
+                    className={`button-toggle ${isPlayedCls}`
+                    }>
+                    {label}
+                </button>
             </li>
 
             <li
                 className={`col-li _col-li8 _del-game`}>
                         <span
-                            onClick={ () => delGame(id)}
+                            onClick={ () => this.removeGame(id, keyGame)}
                         >
                             <i className="fa fa-times del-game__icon" aria-hidden="true"/>
                         </span>
             </li>
         </ul>
-    )
+    )}
 };
-
-export default Game;
