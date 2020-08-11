@@ -2,73 +2,29 @@ import React, {Component} from 'react';
 import './app.scss';
 import Header from "../header";
 import GameList from "../game-list";
+import Server from "../../server";
 
 export default class App extends Component{
+    server = new Server();
     state={
-        games: [
-            {
-                title: 'Bloodborne',
-                by: 'FromSoftware',
-                genre: 'action/RPG',
-                year: '2014',
-                format: 'disk',
-                isPlayed: 'passed',
-                id: '1'
-            },
-            {
-                title: 'Uncharted 4',
-                by: 'Naughty Dog',
-                genre: 'action-adventure',
-                year: '2013',
-                format: 'disk',
-                isPlayed: 'played',
-                id: '2'
-            },
-            {
-                title: 'Resident Evil 2',
-                by: 'Capcom',
-                genre: 'survival horror',
-                year: '2019',
-                format: 'psPlus',
-                isPlayed: 'noPlayed',
-                id: '3'
-            },
-            {
-                title: 'Dark Souls 3 goty',
-                by: 'FromSoftware',
-                genre: 'action/RPG',
-                year: '2017',
-                format: 'psPlus',
-                isPlayed: 'passed',
-                id: '4'
-            },
-            {
-                title: 'God of War',
-                by: 'SCE Santa Monica Studio',
-                genre: 'action-adventure',
-                year: '2018',
-                format: 'hdd',
-                isPlayed: 'played',
-                id: '5',
-            },
-        ],
+        games: [],
         patternStr: '',
         isPlayed: 'all',
         format: 'all',
         genre: 'all'
     };
 
-    addNewGame = (newGame) => {
-        // const copyGames = this.state.games.concat(newGame);
-        console.log(newGame)
-        // console.log(copyGames)
+    async componentDidMount() {
+        try{
+            const gameList = await this.server.getGameList();
+            this.setState( {games: gameList});
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
-       this.setState(({games}) => {
-           const copyGames = games.concat(newGame);
-           return {
-               games: copyGames
-           }
-       })
+    addNewGame =  (newGame) => {
+
     };
 
     searchChange = (patternStr) => {

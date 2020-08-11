@@ -4,7 +4,7 @@ import AddGame from "../add-game";
 import ItemList from "../item-list";
 
 const GameList = props => {
-    const {addNewGame, games,
+    const {games, addNewGame,
         genreChange, filterChange,
         isPlayed, format,
         isPlayedChangeBtn, delGame} = props;

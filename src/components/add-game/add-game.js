@@ -3,6 +3,7 @@ import './add-game.scss'
 import Input from "../input";
 import Select from "../select";
 import {createControl, validate, validateForm} from '../../form/formFramework';
+import Server from "../../server";
 
 function createControlsInput() {
     return {
@@ -70,7 +71,7 @@ function createControlsSelect() {
                     text: 'hdd'
                 },
                 {
-                    value: 'ps plus',
+                    value: 'psPlus',
                     text: 'ps plus'
                 }
             ],
@@ -80,9 +81,10 @@ function createControlsSelect() {
 
 
 export default class AddGame extends Component {
+    server = new Server();
     state = {
         games: [],
-        counter: 100,
+        counter: 0,
         isFormValid: false,
         formControlsInput: createControlsInput(),
         formControlsSelect: createControlsSelect(),
@@ -112,10 +114,21 @@ export default class AddGame extends Component {
             formControlsSelect
         });
     };
+    async componentDidMount() {
+        try{
+            const counter = await this.server.getCounter();
+            this.setState({
+                counter
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
-    createNewGame(e) {
+    async createNewGame(e) {
         e.preventDefault();
         const counter = this.state.counter + 1;
+        const id = ('' + counter).length < 2 ? `game0${counter}` : `game${counter}`;
 
         const {formControlsInput, formControlsSelect} = this.state;
 
@@ -126,10 +139,13 @@ export default class AddGame extends Component {
             year: formControlsInput.year.value,
             format: formControlsSelect.format.value,
             isPlayed: 'noPlayed',
-            id: `game${counter}`,
+            id,
+
         };
 
-        this.props.addNewGame(newGame);
+        newGame.keyGame = await this.server.postGame(newGame);
+        console.log(newGame);
+        this.server.updateCounter(counter);
 
         this.setState({
             counter,
@@ -138,9 +154,6 @@ export default class AddGame extends Component {
             formControlsSelect: createControlsSelect(),
         })
     }
-
-
-
 
     renderInputs() {
         return Object.keys(this.state.formControlsInput )
@@ -186,6 +199,8 @@ export default class AddGame extends Component {
             )
         })
     }
+
+
 
     render() {
         const inputs = this.renderInputs();
