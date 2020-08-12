@@ -11,22 +11,23 @@ export default class App extends Component{
         patternStr: '',
         isPlayed: 'all',
         format: 'all',
-        genre: 'all'
+        genre: 'all',
+        error: 'false',
+        loading: 'true'
     };
 
     async componentDidMount() {
         try{
             const gameList = await this.server.getGameList();
-            this.setState( {games: gameList});
+            this.setState( {games: gameList, loading: false, error: false});
         } catch (e) {
-            console.log(e)
+            this.setState({error: true, loading: false});
         }
     }
 
     addNewGame =  (newGame) => {
         this.setState( ({games}) => {
             const newArrGames = games.concat(newGame);
-            console.log(newArrGames)
             return {
                 games: newArrGames
             }
@@ -87,29 +88,15 @@ export default class App extends Component{
         )
     }
 
-    isPlayedChangeBtn = (id) => {
-
+    isPlayedChangeInState = async (game) => {
+        const id = game.id;
+        try{
+           await this.server.isPlayedChange(game)
+        } catch (e) {
+            console.log(e)
+        }
         this.setState(({games}) => {
             const idx = this.findIdx(id);
-            const game =  games[idx];
-            switch (game.isPlayed) {
-                case "noPlayed": {
-                    game.isPlayed = 'played';
-                    break;
-                }
-
-                case "played": {
-                    game.isPlayed = 'passed';
-                    break;
-                }
-                case "passed": {
-                    game.isPlayed = 'noPlayed';
-                    break;
-                }
-                default: {
-                    game.isPlayed = 'noPlayed';
-                }
-            }
             const newArr = [
                 ...games.slice(0, idx),
                 game,
@@ -148,7 +135,7 @@ export default class App extends Component{
     }
 
     render(){
-        const {games, genre,  isPlayed, format, patternStr} = this.state;
+        const {games, genre,  isPlayed, format, error, loading, patternStr} = this.state;
 
         const searchListOfGames = this.search(games, patternStr);
         const isPlayedListOfGame = this.isPlayedFilter(searchListOfGames, isPlayed);
@@ -170,7 +157,9 @@ export default class App extends Component{
                 filterChange={this.filterChange}
                 isPlayed={isPlayed}
                 format={format}
-                isPlayedChangeBtn={this.isPlayedChangeBtn}
+                error={error}
+                loading={loading}
+                isPlayedChangeInState={this.isPlayedChangeInState}
                 delGameInState={this.delGameInState}
             />
         </div>

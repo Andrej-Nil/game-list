@@ -146,7 +146,8 @@ export default class AddGame extends Component {
 
         newGame.keyGame = await this.server.postGame(newGame);
         addNewGame(newGame);
-        this.server.updateCounter(counter);
+
+        await this.server.updateCounter(counter);
 
         this.setState({
             counter,

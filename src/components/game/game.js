@@ -5,6 +5,27 @@ import Server from "../../server";
 
 export default class Game extends Component {
     server = new Server();
+
+    isPlayedChangeBtn = (game) => {
+        switch (game.isPlayed) {
+            case "noPlayed": {
+                game.isPlayed = 'played';
+                break;
+            }
+            case "played": {
+                game.isPlayed = 'passed';
+                break;
+            }
+            case "passed": {
+                game.isPlayed = 'noPlayed';
+                break;
+            }
+            default: {
+                game.isPlayed = 'noPlayed';
+            }
+        }
+        this.props.isPlayedChangeInState(game);
+    };
     removeGame = async (id, keyGame)=>{
          try{
              await this.server.deleteGame(keyGame)
@@ -14,7 +35,7 @@ export default class Game extends Component {
         this.props.delGameInState(id)
     };
     render(){
-        const {game, index, isPlayedChangeBtn } = this.props;
+        const {game, index } = this.props;
         const { id, title, by, genre, year, format, keyGame, isPlayed} = game;
 
         let icon;
@@ -85,15 +106,15 @@ export default class Game extends Component {
 
             <li
                 className={`col-li _col-li6`}>
-                        <span>
-                            <i className={`format-icon ${icon}`}/>
-                        </span>
+                <span>
+                    <i className={`format-icon ${icon}`}/>
+                </span>
             </li>
 
             <li
                 className={`col-li _col-li7 _is-played`}>
                 <button
-                    onClick={() => isPlayedChangeBtn(id)}
+                    onClick={() => this.isPlayedChangeBtn(game)}
                     className={`button-toggle ${isPlayedCls}`
                     }>
                     {label}
@@ -102,11 +123,11 @@ export default class Game extends Component {
 
             <li
                 className={`col-li _col-li8 _del-game`}>
-                        <span
-                            onClick={ () => this.removeGame(id, keyGame)}
-                        >
-                            <i className="fa fa-times del-game__icon" aria-hidden="true"/>
-                        </span>
+                <span
+                    onClick={ () => this.removeGame(id, keyGame)}
+                >
+                    <i className="fa fa-times del-game__icon" aria-hidden="true"/>
+                </span>
             </li>
         </ul>
     )}

@@ -6,8 +6,8 @@ import ItemList from "../item-list";
 const GameList = props => {
     const {games, addNewGame,
         genreChange, filterChange,
-        isPlayed, format,
-        isPlayedChangeBtn, delGameInState} = props;
+        isPlayed, format, error, loading,
+        isPlayedChangeInState, delGameInState} = props;
 
     return (
         <div className='game-list'>
@@ -15,10 +15,12 @@ const GameList = props => {
             <ItemList
                 games={games}
                 genreChange={genreChange}
+                error={error}
+                loading={loading}
                 filterChange={filterChange}
                 isPlayed={isPlayed}
                 format={format}
-                isPlayedChangeBtn={isPlayedChangeBtn}
+                isPlayedChangeInState={isPlayedChangeInState}
                 delGameInState={delGameInState}
             />
         </div>

@@ -8,13 +8,14 @@ export default class Server {
         return response.data;
     }
 
-    updateCounter = (counter) => {
-        axios.put(`${this._baseApi}/counter.json`, counter)
+    updateCounter = async (counter) => {
+        await axios.put(`${this._baseApi}/counter.json`, counter)
     };
 
     async getGameList(){
         const response = await axios.get(`${this._baseApi}/games.json`);
-        return this._transformGameList(response.data);
+        const data = response.data;
+        return this._transformGameList(data);
     }
 
     _transformGameList(data){
@@ -31,9 +32,14 @@ export default class Server {
      postGame = async (newGame) => {
         const response = await axios.post(`${this._baseApi}/games.json`, newGame);
         return response.data.name
-    };
+     };
 
     deleteGame = async (keyGame) => {
         await axios.delete(`${this._baseApi}/games/${keyGame}.json`)
+    };
+
+    isPlayedChange = async (game) => {
+        const {keyGame, ...test} = game;
+        await axios.put(`${this._baseApi}/games/${keyGame}.json`, test);
     }
 }
