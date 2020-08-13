@@ -9,7 +9,6 @@ const ItemList = props => {
         filterChange, isPlayed, format, error, loading,
         isPlayedChangeInState, delGameInState} = props;
 
-
     return (
         <div className="item-list _bg-shadow">
             <Filter

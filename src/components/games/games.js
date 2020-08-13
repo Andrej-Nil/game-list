@@ -2,8 +2,9 @@ import React from "react";
 import './games.scss'
 import Game from "../game";
 import NotFound from "../not-found";
+import Loader from "../loader";
 
-const Games = ({games, error, loading,
+const Games = ({games, loading,
                    delGameInState, isPlayedChangeInState}) => {
     function renderGames() {
         return games.map( (game, index) => {
@@ -19,16 +20,17 @@ const Games = ({games, error, loading,
             )
         })
     }
-    const load = loading ? 'loading' : null;
+
+    const load = loading ? <Loader/> : null;
     const gameList = games ? renderGames() : null;
-    const test = error ? 'test' : null;
-
-
+    const notFound = !games.length &&  loading === false ? <NotFound/> : null;
         return (
         <div className='games'>
             {gameList}
             {load}
-            {test}
+            {notFound}
+
+
         </div>
     )
 };
